@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  # Postgres DB
+  postgres:
+    environment:
+      POSTGRES_DB: btre
+      POSTGRES_PASSWORD: btre123
+      POSTGRES_USER: btre
+    image: postgres:alpine
+    restart: always
+    container_name: local_btre_postgres
+    ports:
+      - "5432:5432"

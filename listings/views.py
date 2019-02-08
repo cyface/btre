@@ -10,6 +10,7 @@ class ListingsView(ListView):
     context_object_name = "listings"
     model = Listing
     paginate_by = 3
+    queryset = Listing.objects.filter(is_published=True)
     template_name = "listings/listings.html"
 
 

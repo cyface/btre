@@ -1,4 +1,6 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
+from realtors.models import Realtor
 
 """
 Class way
@@ -13,7 +15,9 @@ def about(request):
 """
 
 
-class AboutView(TemplateView):
+class AboutView(ListView):
+    context_object_name = "realtors"
+    model = Realtor
     template_name = "pages/about.html"
 
 

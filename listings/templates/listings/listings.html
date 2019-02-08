@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load humanize static %}
 {% block content %}
 
     <section id="showcase-inner" class="py-5 text-white">
@@ -38,7 +38,7 @@
                             <img class="card-img-top" src="{% get_media_prefix %}{{ listing.photo_main }}" alt="Photo of {{ listing.title }}">
                             <div class="card-img-overlay">
                                 <h2>
-                                    <span class="badge badge-secondary text-white">${{ listing.price }}</span>
+                                    <span class="badge badge-secondary text-white">${{ listing.price|intcomma }}</span>
                                 </h2>
                             </div>
                             <div class="card-body">
@@ -79,6 +79,10 @@
                                 <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
                             </div>
                         </div>
+                    </div>
+                {% empty %}
+                    <div class="col-md-12">
+                        <p>Sorry, no listings available.</p>
                     </div>
                 {% endfor %}
             </div>

@@ -5,12 +5,12 @@ from .models import Listing
 
 class ListingsView(ListView):
     """
-    Shows listings page
+    Shows listings list page
     """
-    model = Listing
-    template_name = "listings/listings.html"
     context_object_name = "listings"
+    model = Listing
     paginate_by = 3
+    template_name = "listings/listings.html"
 
 
 class ListingView(DetailView):

@@ -1,18 +1,23 @@
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
+
+from .models import Listing
 
 
-class ListingsView(TemplateView):
+class ListingsView(ListView):
     """
     Shows listings page
     """
+    model = Listing
     template_name = "listings/listings.html"
+    context_object_name = "listings"
+    paginate_by = 3
 
 
 class ListingView(DetailView):
     """
     Shows listing detail page
     """
-    # model = Listing
+    model = Listing
     template_name = "listings/listing.html"
 
 

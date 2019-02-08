@@ -1,10 +1,9 @@
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
+
+from .views import ListingView, ListingsView, SearchView
 
 urlpatterns = [
-    path('', views.ListingsView.as_view(), name='listings'),
-    path('<int:listing_id>', views.ListingView.as_view(), name='listing'),
-    path('search', views.SearchView.as_view(), name='search'),
+    path('', ListingsView.as_view(), name='listings'),
+    path('<int:pk>', ListingView.as_view(), name='listing'),
+    path('search', SearchView.as_view(), name='search'),
 ]

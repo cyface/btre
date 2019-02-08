@@ -1,0 +1,11 @@
+{% load static %}
+<div class="col-md-3">
+    <div class="card mb-3">
+        <img class="card-img-top" src="{{ realtor.photo.url }}" alt="Seller of the month">
+        <div class="card-body">
+            <h5 class="card-title">{% if mvp %}Seller of the Month{% else %}Property Realtor{% endif %}</h5>
+            <h6 class="text-secondary">{{ realtor.name }}</h6>
+        </div>
+    </div>
+    <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
+</div>

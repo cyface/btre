@@ -1,5 +1,7 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import ListView
 
+from listings.forms import SearchForm
+from listings.models import Listing
 from realtors.models import Realtor
 
 """
@@ -21,5 +23,13 @@ class AboutView(ListView):
     template_name = "pages/about.html"
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
+    context_object_name = "listings"
+    model = Listing
+    queryset = Listing.objects.filter(is_published=True).order_by('-list_date')[:3]
     template_name = "pages/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['form'] = SearchForm()
+        return context

@@ -27,6 +27,7 @@
       <list>
         <option value="$MODULE_DIR$/pages/templates" />
         <option value="$MODULE_DIR$/listings/templates" />
+        <option value="$MODULE_DIR$/realtors/templates" />
       </list>
     </option>
   </component>

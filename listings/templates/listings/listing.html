@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load listings_tags realtors_tags static %}
 {% block content %}
     <section id="showcase-inner" class="py-5 text-white">
         <div class="container">
@@ -37,39 +37,15 @@
             <div class="row">
                 <div class="col-md-9">
                     <!-- Home Main Image -->
-                    <img src="{% get_media_prefix %}{{ listing.photo_main }}" alt="" class="img-main img-fluid mb-3">
+                    <img src="{{ listing.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
                     <!-- Thumbnails -->
                     <div class="row mb-5 thumbs">
-                        <div class="col-md-2">
-                            <a href="assets/img/homes/home-inside-1.jpg" data-lightbox="home-images">
-                                <img src="{% get_media_prefix %}{{ listing.photo_1 }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="assets/img/homes/home-inside-2.jpg" data-lightbox="home-images">
-                                <img src="{% get_media_prefix %}{{ listing.photo_2 }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="assets/img/homes/home-inside-3.jpg" data-lightbox="home-images">
-                                <img src="{% get_media_prefix %}{{ listing.photo_3 }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="assets/img/homes/home-inside-4.jpg" data-lightbox="home-images">
-                                <img src="{% get_media_prefix %}{{ listing.photo_4 }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="assets/img/homes/home-inside-5.jpg" data-lightbox="home-images">
-                                <img src="{% get_media_prefix %}{{ listing.photo_5 }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="assets/img/homes/home-inside-6.jpg" data-lightbox="home-images">
-                                <img src="{% get_media_prefix %}{{ listing.photo_16 }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
+                        {% show_photo_thumbnail listing.photo_1 %}
+                        {% show_photo_thumbnail listing.photo_2 %}
+                        {% show_photo_thumbnail listing.photo_3 %}
+                        {% show_photo_thumbnail listing.photo_4 %}
+                        {% show_photo_thumbnail listing.photo_5 %}
+                        {% show_photo_thumbnail listing.photo_6 %}
                     </div>
                     <!-- Fields -->
                     <div class="row mb-5 fields">
@@ -121,16 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month">
-                        <div class="card-body">
-                            <h5 class="card-title">Property Realtor</h5>
-                            <h6 class="text-secondary">Kyle Brown</h6>
-                        </div>
-                    </div>
-                    <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
-                </div>
+                {% realtor_tile listing.realtor %}
             </div>
         </div>
     </section>
@@ -149,7 +116,7 @@
                     <form>
                         <div class="form-group">
                             <label for="property_name" class="col-form-label">Property:</label>
-                            <input type="text" name="listing" class="form-control" value="45 Drivewood Cirlce" disabled>
+                            <input type="text" name="listing" class="form-control" value="{{ listing.title }}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="name" class="col-form-label">Name:</label>

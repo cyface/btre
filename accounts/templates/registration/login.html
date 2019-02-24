@@ -11,6 +11,13 @@
                                 <i class="fas fa-sign-in-alt"></i> Login</h4>
                         </div>
                         <div class="card-body">
+                            {% if form.errors %}
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
                             <form action="{% url 'login' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">

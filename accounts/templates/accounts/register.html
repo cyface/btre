@@ -17,28 +17,48 @@
                                 {% endfor %}
                             </ul>
                         {% endif %}
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <strong>Please Correct the Errors Below</strong>
+                            </div>
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                         <div class="card-body">
                             <form action="{% url 'register' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label for="first_name">First Name</label>
+                                    {{ form.first_name.label_tag }}
                                     {{ form.first_name }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="last_name">Last Name</label>
+                                    {{ form.last_name.label_tag }}
                                     {{ form.last_name }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Username</label>
+                                    {% for error in form.username.errors %}
+                                        <div class="alert alert-danger">{{ error }}</div>
+                                    {% endfor %}
+                                    {{ form.username.label_tag }}
                                     {{ form.username }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
+                                    {{ form.email.label_tag }}
                                     {{ form.email }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="password2">Password</label>
+                                    {% for error in form.password.errors %}
+                                        <div class="alert alert-danger">{{ error }}</div>
+                                    {% endfor %}
+                                    {{ form.password.label_tag }}
                                     {{ form.password }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.password_validate.label_tag }}
+                                    {{ form.password_validate }}
                                 </div>
                                 <input type="submit" value="Register" class="btn btn-secondary btn-block">
                             </form>

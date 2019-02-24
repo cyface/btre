@@ -28,7 +28,7 @@
                             {% endfor %}
                         {% endif %}
                         <div class="card-body">
-                            <form action="{% url 'register' %}" method="post">
+                            <form id="register-form" action="{% url 'register' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     {{ form.first_name.label_tag }}
@@ -72,3 +72,19 @@
         </div>
     </section>
 {% endblock content %}
+
+{% block endjs %}
+    <script type="text/javascript">
+        // Validate that the passwords match
+        const id_password_validate_field = $('#id_password_validate');
+        const id_password_field = $('#id_password');
+
+        id_password_validate_field.blur(function () {
+            if (id_password_field.val() === id_password_validate_field.val()) {
+                id_password_field[0].setCustomValidity(''); // Clear validity error
+            } else {
+                id_password_field[0].setCustomValidity('Passwords do not match.');
+            }
+        });
+    </script>
+{% endblock %}

@@ -36,11 +36,19 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-3">
+                <li {% if request.path == '/register/' %}
+                    class="nav-item active mr-3"
+                {% else %}
+                    class="nav-item mr-3"
+                {% endif %}>
                     <a class="nav-link" href="{% url 'register' %}">
                         <i class="fas fa-user-plus"></i> Register</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li {% if request.path == '/accounts/login/' %}
+                    class="nav-item active mr-3"
+                {% else %}
+                    class="nav-item mr-3"
+                {% endif %}>
                     <a class="nav-link" href="{% url 'login' %}">
                         <i class="fas fa-sign-in-alt"></i>
                         Login

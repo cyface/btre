@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.db import IntegrityError
 
 
 class RegisterForm(forms.Form):
@@ -41,8 +40,7 @@ class RegisterForm(forms.Form):
         """
         Validate that the username does not already exist
         """
-        user = User.objects.filter(username=self.cleaned_data.get('username'))
-        if user:
+        if User.objects.filter(username=self.cleaned_data.get('username')).exists():
             self.add_error('username', "This Username Already Exists, Please Choose a Different One")
         else:
             return self.cleaned_data.get('username')

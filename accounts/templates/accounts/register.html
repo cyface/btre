@@ -10,13 +10,6 @@
                             <h4>
                                 <i class="fas fa-user-plus"></i> Register</h4>
                         </div>
-                        {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
                         {% if form.errors %}
                             <div class="alert alert-danger">
                                 <strong>Please Correct the Errors Below</strong>

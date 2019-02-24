@@ -2,12 +2,9 @@
 Accounts Views
 """
 from django.conf import settings
-from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-from django.db import IntegrityError
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.shortcuts import redirect
 from django.views.generic import TemplateView, FormView
 
 from accounts.forms import RegisterForm
@@ -40,4 +37,4 @@ class RegisterView(FormView):
         user.last_name = form.cleaned_data.get('last_name')
         user.save()
         login(self.request, user)
-        return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+        return redirect(settings.LOGIN_REDIRECT_URL)

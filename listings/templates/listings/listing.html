@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load listings_tags realtors_tags static %}
+{% block headtitle %}{{ listing.address }} {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }} | Available Now From BT Real Estate!{% endblock headtitle %}
 {% block content %}
     <section id="showcase-inner" class="py-5 text-white">
         <div class="container">

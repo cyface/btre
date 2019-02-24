@@ -29,8 +29,8 @@ class RegisterForm(forms.Form):
     def clean_password_validate(self):
         """
         Validate that the password and password_validate fields match.
-        Since clean_<fieldname> methods are run in order of definition on this class, we check it here rather than on password
-        So that the base type coercions and validations will already have been run for both
+        Since clean_<fieldname> methods are run in order of definition on this class, we check it here rather than on password,
+        so that the base type coercions and validations will already have been run for both.
         """
         if self.cleaned_data.get('password') != self.cleaned_data.get('password_validate'):
             self.add_error('password', "Passwords Must Match")  # Adding this as a validation fail on password so the error is attached to that field

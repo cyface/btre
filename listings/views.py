@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, DetailView, ListView, FormView
+from django.views.generic import DetailView, ListView, FormView
 
 from listings.forms import SearchForm
 from .models import Listing

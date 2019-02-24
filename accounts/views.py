@@ -39,5 +39,5 @@ class RegisterView(FormView):
         user.first_name = form.cleaned_data.get('first_name')
         user.last_name = form.cleaned_data.get('last_name')
         user.save()
-        login(self.request, form.cleaned_data.get('user'))
+        login(self.request, user)
         return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)

@@ -4,10 +4,11 @@ Accounts Views
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView as DjangoLoginView
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, FormView
 
-from accounts.forms import RegisterForm
+from accounts.forms import RegisterForm, LoginForm
 
 
 class DashboardView(TemplateView):
@@ -15,6 +16,13 @@ class DashboardView(TemplateView):
     Shows Dashboard Page
     """
     template_name = "accounts/dashboard.html"
+
+
+class LoginView(DjangoLoginView):
+    """
+    Subclasses Django's Login View to allow tweaking the login form
+    """
+    form_class = LoginForm
 
 
 class RegisterView(FormView):

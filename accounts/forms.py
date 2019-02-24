@@ -1,5 +1,21 @@
+"""
+Accounts Views
+"""
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+
+
+class LoginForm(AuthenticationForm):
+    """
+    Form to Log Users In - Only subclassing to be able to add Bootstrap CSS Class
+    """
+
+    def __init__(self, request=None, *args, **kwargs):
+        self.declared_fields['username'].widget.attrs.update({'class': 'form-control'})
+        self.declared_fields['password'].widget.attrs.update({'class': 'form-control'})
+        kwargs['label_suffix'] = ''
+        super().__init__(request, *args, **kwargs)
 
 
 class RegisterForm(forms.Form):

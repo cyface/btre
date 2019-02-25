@@ -7,7 +7,7 @@ register = template.Library()
 
 def set_user_values(user):
     initial = {}
-    if user:
+    if user and user.is_authenticated:
         initial['user_id'] = user.id
         initial['name'] = user.get_full_name()
         initial['email'] = user.email

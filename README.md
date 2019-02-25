@@ -22,3 +22,5 @@ Once you have Docker installed in your environment, you can get this going with 
 The first time you run, you will then need to run `./cicd/docker-compose/init.sh` to load sample data.
 
 The MEDIA_ROOT is set as a volume, so once you've run this, you won't be able to re-load the starting media files.
+
+If you want to delete all the images and such: `docker-compose down` (from the root of this project.)

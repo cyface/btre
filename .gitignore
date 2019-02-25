@@ -179,7 +179,5 @@ pyvenv.cfg
 .venv
 pip-selfcheck.json
 
-/static
-
 # Mac Files
 .DS_Store

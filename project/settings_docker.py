@@ -1,5 +1,7 @@
 from .settings import *
 
+ALLOWED_HOSTS = ['dev.cyface.com', 'btre.cyface.com']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

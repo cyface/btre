@@ -23,4 +23,4 @@ services:
     depends_on:
       - uwsgi
     ports:
-      - 8778:80
+      - 8118:80

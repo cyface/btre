@@ -6,16 +6,21 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView as DjangoLoginView
 from django.shortcuts import redirect
-from django.views.generic import TemplateView, FormView
+from django.views.generic import FormView, ListView
 
 from accounts.forms import RegisterForm, LoginForm
+from contacts.models import Contact
 
 
-class DashboardView(TemplateView):
+class DashboardView(ListView):
     """
     Shows Dashboard Page
     """
+    context_object_name = "contacts"
     template_name = "accounts/dashboard.html"
+
+    def get_queryset(self):
+        return Contact.objects.filter(user_id=self.request.user.id)
 
 
 class LoginView(DjangoLoginView):

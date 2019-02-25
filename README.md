@@ -14,3 +14,9 @@ This project requires Python 3 - I used Python 3.7 and PyCharm.
 I created Template Tags for the Listing Tile and Realtor tile to avoid having that HTML in multiple places throughout the app.
 
 I renamed the 'btre' module to 'project', which is a standard I've seen elsewhere that makes it easier to find things across projects.
+
+Docker Configuration
+--------------------
+Once you have Docker installed in your environment, you can get this going with Docker by running `./cicd/docker-compose/update.sh`
+
+The first time you run, you will then need to run `./cicd/docker-compose/init.sh` to load sample data.

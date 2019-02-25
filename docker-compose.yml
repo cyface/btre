@@ -1,0 +1,26 @@
+version: '3.2'
+services:
+  database:
+    image: postgres:alpine
+    environment:
+      POSTGRES_PASSWORD: btre123
+      POSTGRES_USER: btre
+#  redis:
+#    image: redis:alpine
+  uwsgi:
+    build: .
+    command: uwsgi --yaml=/usr/src/app/cicd/docker-compose/uwsgi-compose.yml
+    depends_on:
+      - database
+#      - redis
+    ports:
+      - 7000
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    command: nginx -g 'daemon off;'
+    depends_on:
+      - uwsgi
+    ports:
+      - 8778:80

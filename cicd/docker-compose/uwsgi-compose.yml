@@ -1,0 +1,11 @@
+uwsgi:
+  chdir: /usr/src/app/
+  enable-threads: true
+  logfile-chmod: 644
+  master: true
+  pythonpath: .
+  uwsgi-socket: 0.0.0.0:7000
+  vacuum: true
+  workers: 4
+  wsgi-file: project/wsgi_docker.py
+

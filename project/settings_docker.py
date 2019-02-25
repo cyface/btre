@@ -1,6 +1,16 @@
 from .settings import *
 
-ALLOWED_HOSTS = ['dev.cyface.com', 'btre.cyface.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'dev.cyface.com', 'btre.cyface.com']
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        }
+    }
+}
 
 DATABASES = {
     'default': {

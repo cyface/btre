@@ -5,14 +5,14 @@ services:
     environment:
       POSTGRES_PASSWORD: btre123
       POSTGRES_USER: btre
-#  redis:
-#    image: redis:alpine
+  redis:
+    image: redis:alpine
   uwsgi:
     build: .
     command: uwsgi --yaml=/usr/src/app/cicd/docker-compose/uwsgi-compose.yml
     depends_on:
       - database
-#      - redis
+      - redis
     ports:
       - 7000
     volumes:

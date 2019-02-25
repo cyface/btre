@@ -15,6 +15,8 @@ services:
 #      - redis
     ports:
       - 7000
+    volumes:
+      - media:/usr/src/app/media
   nginx:
     build:
       context: .
@@ -24,3 +26,6 @@ services:
       - uwsgi
     ports:
       - 8118:80
+
+volumes:
+  media:

@@ -35,7 +35,7 @@ class SearchView(FormView):
         context = self.get_context_data()
         listings = Listing.objects.filter(is_published=True).order_by('-list_date')
         if form.cleaned_data.get('keywords'):
-            listings = listings.filter(description__contains=form.cleaned_data.get('keywords'))
+            listings = listings.filter(description__icontains=form.cleaned_data.get('keywords'))
         if form.cleaned_data.get('city') and form.cleaned_data.get('city') != "ALL":
             listings = listings.filter(city__icontains=form.cleaned_data.get('city'))
         if form.cleaned_data.get('state') and form.cleaned_data.get('state') != "ALL":

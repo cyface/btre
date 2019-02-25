@@ -19,9 +19,7 @@ class LoginForm(AuthenticationForm):
 
 
 class RegisterForm(forms.Form):
-    error_css_class = 'error'
     label_suffix = ''
-    required_css_class = 'required'
 
     first_name = forms.CharField(required=True, label="First Name")
     first_name.widget.attrs.update({'class': 'form-control'})
@@ -60,4 +58,3 @@ class RegisterForm(forms.Form):
             self.add_error('username', "This Username Already Exists, Please Choose a Different One")
         else:
             return self.cleaned_data.get('username')
-

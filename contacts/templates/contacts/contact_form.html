@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load contacts_tags %}
+{% block headtitle %}Contact Us! | BT Real Estate{% endblock headtitle %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h1>Contact Us!</h1>
+                {% contact_form user %}
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock content %}

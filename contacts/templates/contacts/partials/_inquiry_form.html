@@ -1,0 +1,32 @@
+<form action="{% url 'contact_form' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.listing.label_tag }}
+        {% if form.listing.initial %}
+            {{ form.listing.initial }}
+            <input type="hidden" id="id_listing" name="listing" value="{{ form.listing.initial }}">
+        {% else %}
+            {{ form.listing }}
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+    <div class="form-group">
+        {{ form.phone.label_tag }}
+        {{ form.phone }}
+    </div>
+    <div class="form-group">
+        {{ form.message.label_tag }}
+        {{ form.message }}
+    </div>
+    {{ form.listing_id }}
+    {{ form.user_id }}
+    <hr>
+    <input type="submit" value="Send" class="btn btn-block btn-secondary">
+</form>
